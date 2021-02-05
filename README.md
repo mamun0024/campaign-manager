@@ -10,6 +10,7 @@
 *   Project URL: `http://0.0.0.0:80`
 *   To create the schema : `php artisan migrate`
 *   To link a media file : `php artisan storage:link`
+*   To run UNIT test : `php artisan test`
 *   To enter mysql CLI:
     1. `sail exec mysql bash`
     2. `mysql -uroot -proot`
@@ -17,7 +18,6 @@
     1. `sail exec redis redis-cli`
     2. `info`
     3. `select 1`
-*   To run UNIT test : `php artisan test`
 
 ## Used Libraries
 *   Laravel : `composer create-project laravel/laravel campaign-manager`
