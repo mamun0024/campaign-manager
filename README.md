@@ -1,10 +1,13 @@
 ## Project Installation
 *   Clone the project repository : `git clone https://github.com/mamun0024/campaign-manager.git`
+*   Enter the `campaign-manager` folder and rename `.env-example` to `.env` : `cp .env-example .env`
 *   To install project dependencies : `composer install`
 *   To make Sail alias : `alias sail='bash vendor/bin/sail'`
 *   Run form project directory : `sail up`
-*   Project URL: `http://0.0.0.0:80`
 *   Run form project directory to enter application root directory : `sail exec laravel.test bash`
+*   Run : `npm install`
+*   Run : `npm run watch`
+*   Project URL: `http://0.0.0.0:80`
 *   To create the schema : `php artisan migrate`
 *   To link a media file : `php artisan storage:link`
 *   To run UNIT test : `php artisan test for running unit tests`
