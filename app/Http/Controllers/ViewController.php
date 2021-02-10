@@ -13,7 +13,7 @@ class ViewController extends Controller
      *
      * @return Application|Factory|View
      *
-     * @author "Md. Abdullah-Al- Mamun" <mamuncse824@gmail.com>
+     * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
     public function campaignList()
     {
@@ -25,7 +25,7 @@ class ViewController extends Controller
      *
      * @return Application|Factory|View
      *
-     * @author "Md. Abdullah-Al- Mamun" <mamuncse824@gmail.com>
+     * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
     public function createCampaign()
     {
@@ -38,7 +38,7 @@ class ViewController extends Controller
      * @param int $campaign_id Campaign ID
      * @return Application|Factory|View
      *
-     * @author "Md. Abdullah-Al- Mamun" <mamuncse824@gmail.com>
+     * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
     public function updateCampaign(int $campaign_id)
     {
