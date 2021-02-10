@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-Campaign Lists
+    Campaign Lists
 @endsection
 @section('content')
     <div class="row">

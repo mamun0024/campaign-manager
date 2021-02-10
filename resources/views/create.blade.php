@@ -1,6 +1,6 @@
 @extends('layout')
 @section('title')
-Create Campaign
+    Create Campaign
 @endsection
 @section('content')
     <div class="row">
