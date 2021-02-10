@@ -8,7 +8,7 @@ Create Campaign
             <h2>Create Campaign</h2>
         </div>
         <div class="col-md-6 text-right">
-            <a href="#" class="btn btn btn-dark rounded-0">Campaign Lists</a>
+            <a href="#" class="btn btn btn-dark rounded-0"><i class="fa fa-angle-left" aria-hidden="true"></i> Campaign Lists</a>
         </div>
     </div>
     <div class="row">
