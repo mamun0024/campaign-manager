@@ -8,7 +8,7 @@ Campaign Lists
             <h2>Campaign Lists</h2>
         </div>
         <div class="col-md-6 text-right">
-            <a href="#" class="btn btn btn-dark rounded-0">Create Campaign</a>
+            <a href="{{ route('create.campaign') }}" class="btn btn btn-dark rounded-0">Create Campaign</a>
         </div>
     </div>
     <div class="row">

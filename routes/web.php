@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'App\Http\Controllers\ViewController@campaignList')->name('campaign.list');
+Route::get('/campaign/create', 'App\Http\Controllers\ViewController@createCampaign')->name('create.campaign');
+Route::get('/campaign/{campaign_id}/update', 'App\Http\Controllers\ViewController@updateCampaign');
