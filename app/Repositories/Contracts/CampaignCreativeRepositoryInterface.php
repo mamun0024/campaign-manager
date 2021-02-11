@@ -9,25 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 interface CampaignCreativeRepositoryInterface
 {
     /**
-     * Get Campaign Creative Details.
-     *
-     * @param int $campaign_id Campaign ID.
-     * @return CampaignCreative|null Campaign Creative details from database.
-     *
-     * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
-     */
-    public function campaignCreativeDetails(int $campaign_id): ?CampaignCreative;
-
-    /**
      * Create campaign creatives.
      *
      * @param Campaign $campaign Campaign Model.
      * @param array $campaign_creative_data All campaign data.
-     * @return CampaignCreative|null Campaign creatives model data.
+     * @return Campaign|null Campaign model data.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function createCampaignCreative(Campaign $campaign, array $campaign_creative_data): ?CampaignCreative;
+    public function createCampaignCreative(Campaign $campaign, array $campaign_creative_data): ?Campaign;
 
     /**
      * Delete campaign creatives.

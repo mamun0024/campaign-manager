@@ -1,7 +1,7 @@
 /node_modules
 /public/hot
 /public/storage
-/public/creatives/*
+/public/img/*
 /storage/*.key
 
 # JetBrains, aka PHPStorm, IntelliJ IDEA

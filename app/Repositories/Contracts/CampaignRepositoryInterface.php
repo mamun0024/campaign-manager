@@ -3,24 +3,26 @@
 namespace App\Repositories\Contracts;
 
 use App\Models\Campaign;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 interface CampaignRepositoryInterface
 {
     /**
      * Get Campaign Lists.
      *
-     * @return Campaign|null Campaign list from database.
+     * @return HasMany Campaign list from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function campaignLists(): ?Campaign;
+    public function campaignLists(): HasMany;
 
     /**
      * Get Campaign Details.
      *
      * @param int $campaign_id Campaign ID.
-     * @return Campaign|null Campaign details from database.
+     * @return Campaign|Builder|Model|object|null Campaign details from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
