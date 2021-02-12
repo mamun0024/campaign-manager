@@ -18,6 +18,7 @@
     1. `sail exec redis redis-cli`
     2. `info`
     3. `select 1`
+*   Postman Collection path: `docs/Campaign Manager.postman_collection.json`
 
 ## Used Libraries
 *   Laravel : `composer create-project laravel/laravel campaign-manager`
