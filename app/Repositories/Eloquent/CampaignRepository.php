@@ -4,9 +4,6 @@ namespace App\Repositories\Eloquent;
 
 use App\Models\Campaign;
 use App\Repositories\Contracts\CampaignRepositoryInterface;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class CampaignRepository implements CampaignRepositoryInterface
 {

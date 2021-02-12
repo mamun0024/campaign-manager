@@ -17,7 +17,7 @@
 *   To enter redis CLI:
     1. `sail exec redis redis-cli`
     2. `info`
-    3. `select 1`
+    3. `select 0`
 *   Postman Collection path: `docs/Campaign Manager.postman_collection.json`
 
 ## Used Libraries

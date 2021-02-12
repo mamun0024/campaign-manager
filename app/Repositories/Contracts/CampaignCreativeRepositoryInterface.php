@@ -3,8 +3,6 @@
 namespace App\Repositories\Contracts;
 
 use App\Models\Campaign;
-use App\Models\CampaignCreative;
-use Illuminate\Database\Eloquent\Model;
 
 interface CampaignCreativeRepositoryInterface
 {

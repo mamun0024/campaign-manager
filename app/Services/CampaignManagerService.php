@@ -7,7 +7,6 @@ use App\Repositories\Contracts\CampaignCreativeRepositoryInterface;
 use App\Utils\Traits\HelperTrait;
 use App\Models\Campaign;
 use App\Models\CampaignCreative;
-use Exception;
 use Illuminate\Support\Facades\Storage;
 
 class CampaignManagerService implements CampaignManagerServiceInterface
@@ -42,7 +41,6 @@ class CampaignManagerService implements CampaignManagerServiceInterface
      *
      * @param int $campaign_id Campaign ID.
      * @return array|empty Campaign details from database.
-     * @throws Exception
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */

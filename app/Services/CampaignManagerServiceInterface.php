@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Campaign;
-use Exception;
 
 interface CampaignManagerServiceInterface
 {

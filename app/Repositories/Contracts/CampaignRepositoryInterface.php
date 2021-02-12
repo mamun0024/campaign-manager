@@ -3,9 +3,6 @@
 namespace App\Repositories\Contracts;
 
 use App\Models\Campaign;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 interface CampaignRepositoryInterface
 {
