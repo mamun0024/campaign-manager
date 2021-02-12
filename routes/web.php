@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\ViewController@campaignList')->name('campaign.list');
-Route::get('/campaign/create', 'App\Http\Controllers\ViewController@createCampaign')->name('create.campaign');
-Route::get('/campaign/{campaign_id}/update', 'App\Http\Controllers\ViewController@updateCampaign');
+Route::get(
+    '/',
+    [ViewController::class, 'campaignList']
+)->name('campaign.list');
+
+Route::get(
+    '/campaign/create',
+    [ViewController::class, 'createCampaign']
+)->name('create.campaign');
+
+Route::get(
+    '/campaign/{campaign_id}/update',
+    [ViewController::class, 'updateCampaign']
+);

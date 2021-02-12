@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\CampaignController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['namespace' => 'Api', 'prefix' => 'v1', 'as' => 'api.'], function () {
+    Route::get(
+        '/campaigns',
+        [CampaignController::class, 'campaignLists']
+    );
+    Route::get(
+        '/campaign/{campaign_id}',
+        [CampaignController::class, 'campaignDetails']
+    );
+    Route::post(
+        '/campaign/create',
+        [CampaignController::class, 'createCampaign']
+    );
+    Route::post(
+        '/campaign/{campaign_id}/update',
+        [CampaignController::class, 'updateCampaign']
+    );
+    Route::delete(
+        '/campaign/creative/{creative_id}/delete',
+        [CampaignController::class, 'deleteCampaignCreative']
+    );
 });

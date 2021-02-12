@@ -174,6 +174,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ServiceServiceProvider::class,
+
+        App\Repositories\Providers\CampaignRepositoryServiceProvider::class,
+        App\Repositories\Providers\CampaignCreativeRepositoryServiceProvider::class,
 
     ],
 

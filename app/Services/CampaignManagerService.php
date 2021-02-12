@@ -28,100 +28,45 @@ class CampaignManagerService implements CampaignManagerServiceInterface
     /**
      * Get Campaign Lists.
      *
-     * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return  array|empty Campaign list from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function campaignLists(array $request): array
+    public function campaignLists(): array
     {
-        try {
-            $campaign_list = $this->campaign_repository->campaignLists();
-            $response = $this->responseData(
-                true,
-                200,
-                "Campaign lists fetched successfully.",
-                $campaign_list
-            );
-        } catch (Exception $e) {
-            $response = $this->responseData(
-                false,
-                500,
-                "Campaign lists not fetched successfully.",
-                null,
-                $e->getMessage()
-            );
-        }
-        return $response;
+        return $this->campaign_repository->campaignLists();
     }
 
     /**
      * Get Campaign Details.
      *
      * @param int $campaign_id Campaign ID.
-     * @return array Application response.
+     * @return array|empty Campaign details from database.
      * @throws Exception
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
     public function campaignDetails(int $campaign_id): array
     {
-        try {
-            $campaign_data = $this->campaign_repository->campaignDetails($campaign_id);
-            $response = $this->responseData(
-                true,
-                200,
-                "Campaign details fetched successfully.",
-                $campaign_data
-            );
-        } catch (Exception $e) {
-            $response = $this->responseData(
-                false,
-                500,
-                "Campaign details not fetched successfully.",
-                null,
-                $e->getMessage()
-            );
-        }
-        return $response;
+        return $this->campaign_repository->campaignDetails($campaign_id);
     }
 
     /**
      * Create campaign.
      *
      * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return Campaign|null Campaign model data.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function createCampaign(array $request): array
+    public function createCampaign(array $request): ?Campaign
     {
-        try {
-            $prepare_data       = $this->prepareCampaignCreateUpdateData($request);
-            $campaign_data      = $prepare_data["campaign"];
-            $campaign_creatives = $prepare_data["creatives"];
+        $prepare_data       = $this->prepareCampaignCreateUpdateData($request);
+        $campaign_data      = $prepare_data["campaign"];
+        $campaign_creatives = $prepare_data["creatives"];
 
-            $campaign = $this->campaign_repository->createCampaign($campaign_data);
-            $campaign = $this->campaign_creative_repository->createCampaignCreative($campaign, $campaign_creatives);
-
-            $response = $this->responseData(
-                true,
-                200,
-                "Campaign created successfully.",
-                $campaign
-            );
-        } catch (Exception $e) {
-            $response = $this->responseData(
-                false,
-                500,
-                "Campaign not created successfully.",
-                null,
-                $e->getMessage()
-            );
-        }
-        return $response;
+        $campaign = $this->campaign_repository->createCampaign($campaign_data);
+        return $this->campaign_creative_repository->createCampaignCreative($campaign, $campaign_creatives);
     }
 
     /**
@@ -129,73 +74,31 @@ class CampaignManagerService implements CampaignManagerServiceInterface
      *
      * @param int $campaign_id Campaign ID.
      * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return Campaign|null Campaign model data.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function updateCampaign(int $campaign_id, array $request): array
+    public function updateCampaign(int $campaign_id, array $request): ?Campaign
     {
-        try {
-            $prepare_data       = $this->prepareCampaignCreateUpdateData($request);
-            $campaign_data      = $prepare_data["campaign"];
-            $campaign_creatives = $prepare_data["creatives"];
+        $prepare_data       = $this->prepareCampaignCreateUpdateData($request);
+        $campaign_data      = $prepare_data["campaign"];
+        $campaign_creatives = $prepare_data["creatives"];
 
-            $campaign = $this->campaign_repository->updateCampaign($campaign_data, $campaign_id);
-            $campaign = $this->campaign_creative_repository->createCampaignCreative($campaign, $campaign_creatives);
-
-            $response = $this->responseData(
-                true,
-                200,
-                "Campaign updated successfully.",
-                $campaign
-            );
-        } catch (Exception $e) {
-            $response = $this->responseData(
-                false,
-                500,
-                "Campaign not updated successfully.",
-                null,
-                $e->getMessage()
-            );
-        }
-        return $response;
+        $campaign = $this->campaign_repository->updateCampaign($campaign_data, $campaign_id);
+        return $this->campaign_creative_repository->createCampaignCreative($campaign, $campaign_creatives);
     }
 
     /**
      * Delete campaign creatives.
      *
      * @param int $campaign_creative_id Campaign creative id.
-     * @return array Application response.
-     * @throws Exception
+     * @return bool
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function deleteCampaignCreative(int $campaign_creative_id): array
+    public function deleteCampaignCreative(int $campaign_creative_id): bool
     {
-        try {
-            $campaign_creative = $this->campaign_creative_repository->deleteCampaignCreative($campaign_creative_id);
-            if ($campaign_creative) {
-                $response = $this->responseData(
-                    true,
-                    200,
-                    "Campaign creative deleted successfully.",
-                    null,
-                    "Campaign creative deleted successfully."
-                );
-            } else {
-                throw new Exception("Campaign creative not deleted.");
-            }
-        } catch (Exception $e) {
-            $response = $this->responseData(
-                false,
-                500,
-                "Campaign creative not deleted.",
-                null,
-                $e->getMessage()
-            );
-        }
-        return $response;
+        return $this->campaign_creative_repository->deleteCampaignCreative($campaign_creative_id);
     }
 
     /**
@@ -204,7 +107,6 @@ class CampaignManagerService implements CampaignManagerServiceInterface
      *
      * @param array $request Campaign creative id.
      * @return array campaign & campaign creative data.
-     * @throws Exception
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
@@ -234,7 +136,6 @@ class CampaignManagerService implements CampaignManagerServiceInterface
      *
      * @param array $campaign_creatives Campaign Creatives.
      * @return array Application response.
-     * @throws Exception
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */

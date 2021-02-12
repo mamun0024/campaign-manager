@@ -20,26 +20,32 @@ class CampaignRepository implements CampaignRepositoryInterface
     /**
      * Get Campaign Lists.
      *
-     * @return HasMany Campaign list from database.
+     * @return array|empty Campaign list from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function campaignLists(): HasMany
+    public function campaignLists(): array
     {
-        return $this->campaign->creatives()->orderBy(Campaign::CAMPAIGN_ID, 'desc');
+        return $this->campaign->with('creatives')->orderBy(Campaign::CAMPAIGN_ID, 'desc')->get()->toArray();
     }
 
     /**
      * Get Campaign Details.
      *
      * @param int $campaign_id Campaign ID.
-     * @return Campaign|Builder|Model|object|null Campaign details from database.
+     * @return array|empty Campaign details from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function campaignDetails(int $campaign_id): ?Campaign
+    public function campaignDetails(int $campaign_id): array
     {
-        return $this->campaign->creatives()->where(Campaign::CAMPAIGN_ID, $campaign_id)->first();
+        $campaign_details = $this->campaign->with('creatives')->where(Campaign::CAMPAIGN_ID, $campaign_id)->first();
+        if ($campaign_details) {
+            $campaign_details = $campaign_details->toArray();
+        } else {
+            $campaign_details = [];
+        }
+        return $campaign_details;
     }
 
     /**

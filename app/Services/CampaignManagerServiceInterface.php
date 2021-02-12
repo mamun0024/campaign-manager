@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Campaign;
 use Exception;
 
 interface CampaignManagerServiceInterface
@@ -9,20 +10,17 @@ interface CampaignManagerServiceInterface
     /**
      * Get Campaign Lists.
      *
-     * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return  array|empty Campaign list from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function campaignLists(array $request): array;
+    public function campaignLists(): array;
 
     /**
      * Get Campaign Details.
      *
      * @param int $campaign_id Campaign ID.
-     * @return array Application response.
-     * @throws Exception
+     * @return array|empty Campaign details from database.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
@@ -32,33 +30,30 @@ interface CampaignManagerServiceInterface
      * Create campaign.
      *
      * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return Campaign|null Campaign model data.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function createCampaign(array $request): array;
+    public function createCampaign(array $request): ?Campaign;
 
     /**
      * Update campaign.
      *
      * @param int $campaign_id Campaign ID.
      * @param array $request Http request.
-     * @return array Application response.
-     * @throws Exception
+     * @return Campaign|null Campaign model data.
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function updateCampaign(int $campaign_id, array $request): array;
+    public function updateCampaign(int $campaign_id, array $request): ?Campaign;
 
     /**
      * Delete campaign creatives.
      *
      * @param int $campaign_creative_id Campaign creative id.
-     * @return array Application response.
-     * @throws Exception
+     * @return bool
      *
      * @author "Md. Abdullah-Al-Mamun" <mamuncse824@gmail.com>
      */
-    public function deleteCampaignCreative(int $campaign_creative_id): array;
+    public function deleteCampaignCreative(int $campaign_creative_id): bool;
 }
