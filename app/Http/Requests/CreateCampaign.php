@@ -35,7 +35,7 @@ class CreateCampaign extends FormRequest
             "to_date" => "required|date_format:Y-m-d",
             "total_budget" => "required|numeric",
             "daily_budget" => "required|numeric",
-            "creatives" => "array",
+            "creatives" => "required|array",
             "creatives.*" => "mimes:jpg,jpeg,png"
         ];
     }
@@ -48,6 +48,7 @@ class CreateCampaign extends FormRequest
     public function messages(): array
     {
         return [
+            'creatives.*.required' => 'Please upload an image',
             'creatives.*.mimes' => 'Only jpeg and png images are allowed.'
         ];
     }

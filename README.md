@@ -9,7 +9,9 @@
 *   Run : `npm run watch`
 *   Project URL: `http://0.0.0.0:80`
 *   To create the schema : `php artisan migrate`
-*   To link a media file : `php artisan storage:link`
+*   To link a media file : 
+    1. Run form project directory : `rm public/storage`
+    2. `php artisan storage:link`
 *   To run UNIT test : `php artisan test`
 *   To enter mysql CLI:
     1. `sail exec mysql bash`

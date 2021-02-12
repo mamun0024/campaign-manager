@@ -12,6 +12,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12" data-campaign-id="{{ $campaign_id }}" id="update-campaign"></div>
+        <div class="col-md-12" data-campaign_id="{{ $campaign_id }}" id="update-campaign"></div>
     </div>
 @endsection

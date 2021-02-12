@@ -14,3 +14,5 @@ require('./bootstrap');
 
 require('./components/CampaignList');
 require('./components/CampaignListItem');
+require('./components/CampaignCreate');
+require('./components/CampaignUpdate');
