@@ -3,7 +3,7 @@
     Update Campaign
 @endsection
 @section('content')
-    <div class="row">
+    <div class="row header-margin">
         <div class="col-md-6">
             <h2>Update Campaign</h2>
         </div>

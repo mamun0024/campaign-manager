@@ -13,6 +13,15 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    <style>
+        .letter-white{
+            color: #ffffff !important;
+        }
+        .header-margin{
+            margin-bottom: 8px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-3">
