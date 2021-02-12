@@ -26,3 +26,4 @@
 *   PHP Code Sniffer is a tool to detect violations
     of a defined coding standard such as PSR12 : `composer require "squizlabs/php_codesniffer=*" --dev`
 *   Laravel UI : `composer require laravel/ui`
+*   Predis for redis : `composer require predis/predis`
