@@ -35,7 +35,6 @@ class UpdateCampaign extends FormRequest
             "to_date" => "required|date_format:Y-m-d",
             "total_budget" => "required|numeric",
             "daily_budget" => "required|numeric",
-            "creatives" => "array",
             "creatives.*" => "mimes:jpg,jpeg,png"
         ];
     }
