@@ -58,6 +58,6 @@ class CampaignControllerTest extends TestCase
             ->method('campaignLists')
             ->willThrowException(new Exception());
         $response = $this->campaign_controller->campaignLists();
-        $this->assertStringContainsString('Internal Server Error.', $response->original['message']);
+        $this->assertSame('Internal Server Error.', $response->original['message']);
     }
 }
