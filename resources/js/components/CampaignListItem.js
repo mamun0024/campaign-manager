@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import Modal from 'react-bootstrap/Modal';
+import axios from "axios";
 
 class CampaignListItem extends Component {
     constructor(props)
@@ -8,6 +9,7 @@ class CampaignListItem extends Component {
         this.state = {
             campaign: this.props.campaign,
             show: false,
+            errorMessage: null
         }
     }
 
@@ -16,6 +18,21 @@ class CampaignListItem extends Component {
         this.setState({
             show: true
         })
+    }
+
+    deleteCampaignCreative(CampaignCreativeId)
+    {
+        axios.delete('/api/v1/campaign/creative/' + CampaignCreativeId + '/delete')
+            .then(res => {
+                const display = document.getElementById('campaign_creative_img_' + CampaignCreativeId);
+                display.style.display = "none";
+            })
+            .catch(err => {
+                let errorMessage = err.response.data.details
+                this.setState({
+                    errorMessage
+                })
+            })
     }
 
     render()
@@ -41,8 +58,10 @@ class CampaignListItem extends Component {
                     <Modal.Body>
                         <div className="row">
                             {this.state.campaign.creatives.map(creative =>
-                                <div key={creative.file_name} className="col-md-4 mb-3">
+                                <div key={creative.file_name} className="col-md-4 mb-3" id={'campaign_creative_img_' + creative.id}>
                                     <img src={creative.file_path} className="img-fluid" alt={creative.file_name}/>
+                                    <button type="button" className="btn btn-sm btn-outline-dark rounded-0 float-right"
+                                            onClick={() => this.deleteCampaignCreative(creative.id)}>Delete</button>
                                 </div>
                             )}
                         </div>
