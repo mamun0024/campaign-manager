@@ -48,7 +48,7 @@ class UpdateCampaign extends FormRequest
     public function messages(): array
     {
         return [
-            'creatives.*.mimes' => 'Only jpeg and png images are allowed.'
+            'creatives.*.mimes' => 'Only jpg, jpeg and png images are allowed.'
         ];
     }
 
