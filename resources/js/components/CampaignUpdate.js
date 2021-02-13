@@ -28,6 +28,7 @@ class CampaignUpdate extends Component {
                 formdata['to_date'] = campaign['to_date']
                 formdata['total_budget'] = campaign['total_budget']
                 formdata['daily_budget'] = campaign['daily_budget']
+                formdata['creatives'] = campaign['creatives']
 
                 this.setState({
                     campaign,
@@ -91,6 +92,21 @@ class CampaignUpdate extends Component {
         })
     }
 
+    deleteCampaignCreative(CampaignCreativeId)
+    {
+        axios.delete('/api/v1/campaign/creative/' + CampaignCreativeId + '/delete')
+            .then(res => {
+                const display = document.getElementById('campaign_creative_img_' + CampaignCreativeId);
+                display.style.display = "none";
+            })
+            .catch(err => {
+                let errorMessage = err.response.data.details
+                this.setState({
+                    errorMessage
+                })
+            })
+    }
+
     render() {
         return (
             <form onSubmit={this.updateCampaign}>
@@ -134,6 +150,22 @@ class CampaignUpdate extends Component {
                             />
                         </div>
                     </div>)}
+
+                    <div>
+                        {this.state.campaign ? (
+                            <div className="row">
+                                {this.state.formdata.creatives.map(creative =>
+                                    <div key={creative.file_name} className="col-md-4 mb-3" id={'campaign_creative_img_' + creative.id}>
+                                        <img src={creative.file_path} className="img-fluid" alt={creative.file_name}/>
+                                        <button type="button" className="btn btn-sm btn-outline-dark rounded-0 float-right"
+                                                onClick={() => this.deleteCampaignCreative(creative.id)}>Delete</button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            <div className="row"></div>
+                        )}
+                    </div>
 
                 </div>
                 <button type="submit" className="btn btn-dark rounded-0 mt-2">Update</button>

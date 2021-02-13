@@ -2751,26 +2751,8 @@ var CampaignListItem = /*#__PURE__*/function (_Component) {
   }
 
   _createClass(CampaignListItem, [{
-    key: "deleteCampaignCreative",
-    value: function deleteCampaignCreative(CampaignCreativeId) {
-      var _this2 = this;
-
-      axios__WEBPACK_IMPORTED_MODULE_1___default().delete('/api/v1/campaign/creative/' + CampaignCreativeId + '/delete').then(function (res) {
-        var display = document.getElementById('campaign_creative_img_' + CampaignCreativeId);
-        display.style.display = "none";
-      })["catch"](function (err) {
-        var errorMessage = err.response.data.details;
-
-        _this2.setState({
-          errorMessage: errorMessage
-        });
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
-
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
           scope: "row",
@@ -2809,21 +2791,14 @@ var CampaignListItem = /*#__PURE__*/function (_Component) {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
               className: "row",
               children: this.state.campaign.creatives.map(function (creative) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
                   className: "col-md-4 mb-3",
                   id: 'campaign_creative_img_' + creative.id,
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                     src: creative.file_path,
                     className: "img-fluid",
                     alt: creative.file_name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-                    type: "button",
-                    className: "btn btn-sm btn-outline-dark rounded-0 float-right",
-                    onClick: function onClick() {
-                      return _this3.deleteCampaignCreative(creative.id);
-                    },
-                    children: "Delete"
-                  })]
+                  })
                 }, creative.file_name);
               })
             })
@@ -2998,6 +2973,7 @@ var CampaignUpdate = /*#__PURE__*/function (_Component) {
         formdata['to_date'] = campaign['to_date'];
         formdata['total_budget'] = campaign['total_budget'];
         formdata['daily_budget'] = campaign['daily_budget'];
+        formdata['creatives'] = campaign['creatives'];
 
         _this2.setState({
           campaign: campaign,
@@ -3008,9 +2984,25 @@ var CampaignUpdate = /*#__PURE__*/function (_Component) {
       });
     }
   }, {
+    key: "deleteCampaignCreative",
+    value: function deleteCampaignCreative(CampaignCreativeId) {
+      var _this3 = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_2___default().delete('/api/v1/campaign/creative/' + CampaignCreativeId + '/delete').then(function (res) {
+        var display = document.getElementById('campaign_creative_img_' + CampaignCreativeId);
+        display.style.display = "none";
+      })["catch"](function (err) {
+        var errorMessage = err.response.data.details;
+
+        _this3.setState({
+          errorMessage: errorMessage
+        });
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
         onSubmit: this.updateCampaign,
@@ -3097,11 +3089,35 @@ var CampaignUpdate = /*#__PURE__*/function (_Component) {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "file",
                   name: 'creatives[' + key + ']',
-                  onChange: _this3.handleChange,
+                  onChange: _this4.handleChange,
                   className: "form-control"
                 })
               }, 'file_input_' + key)
             });
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            children: this.state.campaign ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "row",
+              children: this.state.formdata.creatives.map(function (creative) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "col-md-4 mb-3",
+                  id: 'campaign_creative_img_' + creative.id,
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+                    src: creative.file_path,
+                    className: "img-fluid",
+                    alt: creative.file_name
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    type: "button",
+                    className: "btn btn-sm btn-outline-dark rounded-0 float-right",
+                    onClick: function onClick() {
+                      return _this4.deleteCampaignCreative(creative.id);
+                    },
+                    children: "Delete"
+                  })]
+                }, creative.file_name);
+              })
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "row"
+            })
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           type: "submit",
