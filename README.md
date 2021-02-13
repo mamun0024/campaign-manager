@@ -4,19 +4,19 @@
 *   To install project dependencies : `composer install`
 *   To make Sail alias : `alias sail='bash vendor/bin/sail'`
 *   Run form project directory : `sail up`
-*   Run form project directory to enter application root directory : `sail exec laravel.test bash`
-*   Run : `npm install`
-*   Run : `npm run watch`
+*   Run form project directory to enter application container CLI : `sail exec laravel.test bash`
+*   From container CLI, run : `npm install`
+*   From container CLI, run : `npm run watch`
 *   Project URL: `http://0.0.0.0:80`
-*   To create the schema : `php artisan migrate`
-*   To link a media file : 
-    1. Run form project directory : `rm public/storage`
+*   From container CLI, to create the schema : `php artisan migrate`
+*   From container CLI, to link a media file : 
+    1. `rm public/storage`
     2. `php artisan storage:link`
-*   To run UNIT test : `php artisan test`
-*   To enter mysql CLI:
+*   From container CLI, to run UNIT test : `php artisan test`
+*   To enter container mysql CLI:
     1. `sail exec mysql bash`
     2. `mysql -uroot -proot`
-*   To enter redis CLI:
+*   To enter container redis CLI:
     1. `sail exec redis redis-cli`
     2. `info`
     3. `select 0`
