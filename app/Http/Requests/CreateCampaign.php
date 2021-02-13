@@ -49,7 +49,7 @@ class CreateCampaign extends FormRequest
     {
         return [
             'creatives.*.required' => 'Please upload an image',
-            'creatives.*.mimes' => 'Only jpeg and png images are allowed.'
+            'creatives.*.mimes' => 'Only jpg, jpeg and png images are allowed.'
         ];
     }
 
