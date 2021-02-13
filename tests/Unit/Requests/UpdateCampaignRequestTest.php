@@ -68,7 +68,8 @@ class UpdateCampaignRequestTest extends TestCase
             "daily_budget" => "500.50",
             "creatives"    => [
                 UploadedFile::fake()->image('campaign_creative_image_3.jpg'),
-                UploadedFile::fake()->image('campaign_creative_image_4.png')
+                UploadedFile::fake()->image('campaign_creative_image_4.png'),
+                UploadedFile::fake()->image('campaign_creative_image_5.jpeg')
             ]
         ];
         $response3 = Validator::make(
